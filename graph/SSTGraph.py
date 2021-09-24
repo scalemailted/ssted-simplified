@@ -1,7 +1,7 @@
 from ..graph.STNode import STNode 
 from ..graph.STGraph import STGraph
 from ..ent.Point import Point
-from ..events.GaussianMotionEvent import GaussianMotionEvent
+from ..events.GaussianEvent import GaussianEvent
 from ..events.GlobalEdgeConnectivityEvent import GlobalEdgeConnectivityEvent
 from ..timeseries.TimeSeries import TimeSeries
 
@@ -24,7 +24,7 @@ class SSTGraph:
         for i in range(0, len(self.nodeIds)):
             pos = Point( *self.positions[i] ) 
             uid = ts.generateNextUID()
-            motion = GaussianMotionEvent.Continuous(uid, 0, pos, self.nodeMeans[i], self.nodeStdDevs[i])
+            motion = GaussianEvent.Continuous(uid, 0, pos, self.nodeMeans[i], self.nodeStdDevs[i])
             node = STNode(self.nodeIds[i], pos)
             nodeList.append(node)
             ts.addNodeMovementEvent(motion)

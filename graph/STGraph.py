@@ -1,15 +1,5 @@
-#TODO TED fix: find replacemment library for Scala Graphs. 
-#from igraph import *                                #scala: scalax.collection.Graph
-#from graphviz import *                              #scala: scalax.collection.io.dot
-#> launch /usr/local/Cellar/graph-tool/2.31_1/libexec/bin/python3
-#import sys
-#sys.path.append('/usr/local/opt/graph-tool/lib/python3.8/site-packages/')
-#from graph_tool.all import *
-
 import networkx as nx
 from ..timeseries.TimeSeries import TimeSeries
-from .STNode import STNode
-from .TEdge import TEdge
 
 #  * Specifies a SpatioTemporal graph
 
@@ -57,14 +47,6 @@ class STGraph:
 
     #Do not use this for graphs with high node and edge counts due to performance.
     def __str__(self):
-        """
-        ret = ""
-        for node in self.stgNodes: 
-            ret += str(node) + "\n"
-        for edge in self.stgEdges:
-            ret += str(edge) + "\n"
-        return ret
-        """
         nodes =  ",".join( map(str,self.stgNodes))
         links =  ",".join( map(str,self.stgEdges))
         return f'{{"nodes": [{nodes}], "links": [{links}]}}'

@@ -4,7 +4,7 @@ from ..graph.TEdge import TEdge
 from ..index.kdtree import KDTree  #import *
 from ..events.ContinuousEvent import ContinuousEvent
 from .DistanceWeightMaintenanceEvent import DistanceWeightMaintenanceEvent
-from .GaussianEdgeEvent import GaussianEdgeEvent
+from .GaussianEvent import GaussianEvent
 
 from random import random
 import math
@@ -54,7 +54,7 @@ class GlobalEdgeConnectivityEvent:
                     #//Notice the g.ts.ctr.  It is OK to insert these events at the current time because global events
                     #// get processed before maintenance and weight events (but after move events).
                     m = DistanceWeightMaintenanceEvent.Continuous(g.ts.generateNextUID(), g.ts.ctr, w, src.getPos(), dst.getPos())
-                    ev = GaussianEdgeEvent.GaussianContinuous(g.ts.generateNextUID(), g.ts.ctr, w, GlobalEdgeConnectivityEvent.getRandomInRange(muW[0], muW[1]), GlobalEdgeConnectivityEvent.getRandomInRange(sigmaW[0], sigmaW[1]))
+                    ev = GaussianEvent.Continuous(g.ts.generateNextUID(), g.ts.ctr, w, GlobalEdgeConnectivityEvent.getRandomInRange(muW[0], muW[1]), GlobalEdgeConnectivityEvent.getRandomInRange(sigmaW[0], sigmaW[1]))
 
                     g.addEdge(e)                    #//Side effects
                     g.ts.addMaintenance(m)          #//Side effects
